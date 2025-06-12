@@ -156,8 +156,8 @@ bot.onText(/\/now/, async (msg) => {
   }
 });
 
-// Schedule daily at 8:00 AM server time
-cron.schedule('0 8 * * *', () => {
+// Schedule daily at 8 am , according to bd time utc+6, server is in utc + 0
+cron.schedule('0 2 * * *', () => {
   console.log("⏰ Running scheduled task...");
   sendDailyMessage();
 });
