@@ -70,9 +70,13 @@ async function getFocusSuggestion() {
 
 async function getDevTrivia() {
     try {
+      const timestamp = new Date().toISOString();
       const res = await openai.chat.completions.create({
         model: 'gpt-4',
-        messages: [{ role: 'user', content: "Give a fun, short programming trivia or fact." }]
+        messages: [{ 
+          role: 'user', 
+          content: `Give a unique, fun, and short programming trivia or fact that hasn't been mentioned before. Make it surprising and educational. Current timestamp: ${timestamp}`
+        }]
       });
       return res.choices[0].message.content.trim();
     } catch (err) {
@@ -83,9 +87,13 @@ async function getDevTrivia() {
   
   async function getArchitecturePattern() {
     try {
+      const timestamp = new Date().toISOString();
       const res = await openai.chat.completions.create({
         model: 'gpt-4',
-        messages: [{ role: 'user', content: "Name one common software architecture pattern and describe it briefly." }]
+        messages: [{ 
+          role: 'user', 
+          content: `Name one common software architecture pattern and describe it briefly. Make sure it's different from previous responses. Current timestamp: ${timestamp}`
+        }]
       });
       return res.choices[0].message.content.trim();
     } catch (err) {
